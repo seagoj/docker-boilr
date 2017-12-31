@@ -2,11 +2,9 @@
 #
 # docker run -it --rm \
 #	-v /etc/localtime:/etc/localtime:ro \
-#	-v $HOME/.rainbow_oauth:/root/.rainbow_oauth \ # mount config files
-#	-v $HOME/.rainbow_config.json:/root/.rainbow_config.json \
-#	--name rainbowstream \
-#	jess/rainbowstream
-#
+#	--name boilr \
+#	seagoj/boilr
+
 FROM golang
 LABEL maintainer "Jeremy Seago <seagoj@gmail.com>"
 
