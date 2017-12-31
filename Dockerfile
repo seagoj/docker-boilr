@@ -2,16 +2,17 @@
 #
 # docker run -it --rm \
 #	-v /etc/localtime:/etc/localtime:ro \
-#	-v $PWD:/root/cwd \
-#	-v $HOME/.config/boilr:/root/.config/boilr \
+#	-v $PWD:/home/boilr/cwd \
+#	-v $HOME/.config/boilr:/home/boilr/.config/boilr \
 #	--name boilr \
 #	seagoj/docker-boilr
 
 FROM golang
 LABEL maintainer "Jeremy Seago <seagoj@gmail.com>"
 
-WORKDIR /root/cwd
-RUN go get github.com/tmrts/boilr
-RUN go install github.com/tmrts/boilr
+RUN groupadd -r boilr && useradd --no-log-init -r -g boilr boilr
+USER boilr
+WORKDIR /home/boilr/cwd
+RUN go get github.com/tmrts/boilr && go install github.com/tmrts/boilr
 
 ENTRYPOINT [ "boilr" ]
