@@ -3,8 +3,9 @@
 # docker run -it --rm \
 #	-v /etc/localtime:/etc/localtime:ro \
 #	-v $PWD:/home/user/cwd \
+#	-v $HOME/.config/boilr:/home/user/.config/boilr \
 #	--name boilr \
-#	seagoj/boilr
+#	seagoj/docker-boilr
 
 FROM golang
 LABEL maintainer "Jeremy Seago <seagoj@gmail.com>"
