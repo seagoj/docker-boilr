@@ -9,10 +9,9 @@
 
 FROM golang
 LABEL maintainer "Jeremy Seago <seagoj@gmail.com>"
+ARG REPO="github.com/Ilyes512/boilr"
 
-RUN groupadd -r boilr && useradd --no-log-init -r -g boilr boilr
 USER boilr
-WORKDIR /home/boilr/cwd
-RUN go get github.com/Ilyes512/boilr && go install github.com/Ilyes512/boilr
+RUN go get "${REPO}" && go install "${REPO}"
 
 ENTRYPOINT [ "boilr" ]
